@@ -38,7 +38,7 @@ window.CARDS = {
             label: "hotorino（ホトリノ）", desc: "狩野川のほとりで、小さな拠点をひらいています。",
             text: "@hotorino_", cta: "フォロー", url: "https://www.instagram.com/hotorino_/",
             more: [
-              { label: "Web サイト", url: "" },   // 要確認（Instagram に hotorino.jp とあるが、2026-11-19 時点で開けなかった）
+              { label: "Web サイト", url: "https://hotorino.jp/" },
             ],
           },
           {
