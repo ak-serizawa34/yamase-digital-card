@@ -11,7 +11,7 @@
 window.CARDS = {
   yamase: {
     org: "YAMASE",
-    title: "",                            // 肩書き（空なら出さない）
+    title: "代表",                        // 肩書き（空なら出さない）
     name: "芹澤 亮裕",
     nameKana: "せりざわ あきひろ",          // 連絡先を保存したときのふりがな
     nameEn: "Akihiro Serizawa",

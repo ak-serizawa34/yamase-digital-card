@@ -48,7 +48,7 @@
   if (c.nameEn) prof.appendChild(el("p", "sub", c.nameEn));
   root.appendChild(prof);
 
-  var orgLine = [c.org, c.title].filter(Boolean).join(" ／ ");
+  var orgLine = [c.org, c.title].filter(Boolean).join("　");
   if (orgLine) root.appendChild(el("p", "org", orgLine));
   if (c.bio) root.appendChild(el("p", "bio", c.bio));
 
