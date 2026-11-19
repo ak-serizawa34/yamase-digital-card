@@ -16,7 +16,7 @@ window.CARDS = {
     nameKana: "せりざわ あきひろ",          // 連絡先を保存したときのふりがな
     nameEn: "Akihiro Serizawa",
     bio: "地域に、新しい風を。\n祖父母の八百屋の屋号「ヤマセ」に、\n山から吹く風「山背」を重ねて。", // YAMASE の下のリード文（\n で改行）
-    photo: "",                            // 例："../assets/photo.jpg"（空なら頭文字を表示）
+    photo: "../assets/photo.jpg",         // 顔写真（空なら頭文字を表示）
     accent: "#3f9a9a",                    // テーマ色（share-me の名刺に合わせたティール）
 
     // 「連絡先を保存」で入る内容。電話とメールは、リンクの一番上にも出る。
