@@ -42,7 +42,7 @@ body {
   margin: 32px 0 0; padding-left: 14px; border-left: 2px solid var(--line);
   font-size: 17px;
 }
-.bio { margin: 12px 0 0; font-size: 15px; white-space: pre-line; }
+.bio { margin: 14px 0 0; padding-left: 16px; font-size: 14px; line-height: 1.8; color: var(--muted); white-space: pre-line; }
 
 /* 連絡先に保存 */
 .save {
