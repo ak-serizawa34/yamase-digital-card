@@ -21,7 +21,7 @@ window.CARDS = {
 
     // 「連絡先を保存」で入る内容。電話とメールは、リンクの一番上にも出る。
     phone: "080-6924-8697",
-    email: "a.serizawa34@gmail.com",
+    email: "ak-serizawa@yamaselab.com",
     website: "",
     address: "",
 
@@ -57,7 +57,7 @@ window.CARDS = {
         contact: true,
         links: [
           { type: "instagram", label: "Instagram", text: "@serizawakihiro", url: "https://www.instagram.com/serizawakihiro/" },
-          { type: "facebook", label: "Facebook", url: "" },   // 要確認（share-me の画面ではURLが途中で切れていた）
+          { type: "facebook", label: "Facebook", text: "akihiro.serizawa.12", url: "https://www.facebook.com/akihiro.serizawa.12/" },
         ],
       },
     ],
