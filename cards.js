@@ -28,16 +28,20 @@ window.CARDS = {
     // リンクの欄。上から順に表示する。heading が空の欄は見出しなし。
     sections: [
       {
-        heading: "",
+        // 見てくれた人にフォローしてもらいたいアカウント。cta が右側のボタンの文字になる。
+        heading: "Instagram をフォローしてください",
         links: [
-          { type: "instagram", label: "Instagram", url: "https://instagram.com/serizawakihiro" },
-          { type: "facebook", label: "Facebook", url: "" },   // 要確認（share-me の画面ではURLが途中で切れていた）
+          { type: "instagram", label: "hotorino", text: "@hotorino_", cta: "フォロー", url: "https://www.instagram.com/hotorino_/" },
+          { type: "instagram", label: "愛鷹テロワール", text: "@ashitaka_terroir", cta: "フォロー", url: "https://www.instagram.com/ashitaka_terroir/" },
         ],
       },
       {
-        heading: "hotorino",
+        // contact: true の欄の一番上に、電話とメールが入る。
+        heading: "連絡先",
+        contact: true,
         links: [
-          { type: "instagram", label: "hotorino", url: "" },  // 要確認（アカウント名）
+          { type: "instagram", label: "Instagram", text: "@serizawakihiro", url: "https://www.instagram.com/serizawakihiro/" },
+          { type: "facebook", label: "Facebook", url: "" },   // 要確認（share-me の画面ではURLが途中で切れていた）
         ],
       },
     ],

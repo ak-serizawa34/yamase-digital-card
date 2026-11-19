@@ -59,7 +59,7 @@
 
   // リンクの欄（電話・メールは先頭の欄の上に足す）
   var sections = (c.sections || []).map(function (s) {
-    return { heading: s.heading, text: s.text, links: (s.links || []).slice() };
+    return { heading: s.heading, text: s.text, contact: s.contact, links: (s.links || []).slice() };
   });
   if (!sections.length) sections.push({ links: [] });
   var head = [];
@@ -67,7 +67,8 @@
   if (c.email) head.push({ type: "mail", label: "メール", text: c.email, url: "mailto:" + c.email });
   if (c.website) head.push({ type: "web", label: "Web サイト", url: c.website });
   if (c.address) head.push({ type: "map", label: "住所", text: c.address, url: "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(c.address) });
-  sections[0].links = head.concat(sections[0].links);
+  var cs = sections.filter(function (s) { return s.contact; })[0] || sections[0];
+  cs.links = head.concat(cs.links);
 
   sections.forEach(function (s) {
     var links = s.links.filter(function (l) { return l.url; });
@@ -94,6 +95,7 @@
     t.appendChild(el("span", "row-l", l.label));
     t.appendChild(el("span", "row-v", l.text || l.url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")));
     a.appendChild(t);
+    if (l.cta) a.appendChild(el("span", "cta", l.cta));
     return a;
   }
 
