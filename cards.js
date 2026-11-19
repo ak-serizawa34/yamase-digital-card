@@ -36,7 +36,7 @@ window.CARDS = {
           // desc：一言の説明　more：下に並べる小さいボタン
           {
             type: "instagram", img: "../assets/hotorino.jpg",
-            label: "hotorino（ホトリノ）", desc: "狩野川のほとりで、小さな拠点をひらいています。",
+            label: "hotorino（ホトリノ）", desc: "泊まるにも暮らすにもちょうどいい拠点",
             text: "@hotorino_", cta: "フォロー", url: "https://www.instagram.com/hotorino_/",
             more: [
               { label: "Web サイト", url: "https://hotorino.jp/" },
@@ -44,7 +44,7 @@ window.CARDS = {
           },
           {
             type: "instagram", img: "../assets/ashitaka_terroir.jpg",
-            label: "愛鷹テロワール", desc: "静岡東部らしさを勝手に語ってます。",
+            label: "愛鷹テロワール", desc: "人、文化、暮らしを、テロワールの視点でたどるPodcast",
             text: "@ashitaka_terroir", cta: "フォロー", url: "https://www.instagram.com/ashitaka_terroir/",
             more: [
               { label: "Spotify で聴く", url: "https://open.spotify.com/show/0346YteU64OWcHY2xqwcE0" },
