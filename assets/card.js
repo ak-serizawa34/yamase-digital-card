@@ -11,69 +11,69 @@
     if (text != null) e.textContent = text;
     return e;
   }
+  function link(href, cls, text) {
+    var a = el("a", cls, text);
+    a.href = href;
+    if (/^https?:/.test(href)) { a.target = "_blank"; a.rel = "noopener"; }
+    return a;
+  }
 
   if (!c) {
     root.appendChild(el("p", "missing", "この名刺は見つかりませんでした。"));
     return;
   }
 
+  var accent = c.accent || "#2f3a4a";
   document.title = c.name + "｜" + c.org;
-  document.documentElement.style.setProperty("--accent", c.accent || "#2f3a4a");
+  document.documentElement.style.setProperty("--accent", accent);
   var meta = document.querySelector('meta[name="theme-color"]');
-  if (meta) meta.content = c.accent || "#2f3a4a";
+  if (meta) meta.content = accent;
 
-  var card = el("div", "card");
-  card.appendChild(el("div", "band"));
-
-  var head = el("div", "head");
+  // プロフィール
+  var prof = el("header", "profile");
   if (c.photo) {
     var img = el("img", "photo");
     img.src = c.photo; img.alt = c.name;
-    head.appendChild(img);
+    prof.appendChild(img);
   } else {
-    head.appendChild(el("div", "photo", (c.nameEn || c.name).trim().charAt(0)));
+    prof.appendChild(el("div", "photo", (c.nameEn || c.name).trim().charAt(0)));
   }
-  head.appendChild(el("p", "org", [c.org, c.title].filter(Boolean).join(" ／ ")));
-  head.appendChild(el("h1", "name", c.name));
-  head.appendChild(el("p", "sub", [c.nameKana, c.nameEn].filter(Boolean).join("　")));
-  if (c.bio) head.appendChild(el("p", "bio", c.bio));
-  card.appendChild(head);
+  prof.appendChild(el("p", "org", [c.org, c.title].filter(Boolean).join(" ／ ")));
+  prof.appendChild(el("h1", "name", c.name));
+  prof.appendChild(el("p", "sub", [c.nameKana, c.nameEn].filter(Boolean).join("　")));
+  if (c.bio) prof.appendChild(el("p", "bio", c.bio));
+
+  // 電話・メールの小さいボタン
+  var quick = el("div", "quick");
+  if (c.phone) quick.appendChild(link("tel:" + c.phone.replace(/[^\d+]/g, ""), "chip", "電話"));
+  if (c.email) quick.appendChild(link("mailto:" + c.email, "chip", "メール"));
+  if (c.address) quick.appendChild(link("https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(c.address), "chip", "地図"));
+  if (quick.childNodes.length) prof.appendChild(quick);
+  root.appendChild(prof);
 
   var btn = el("button", "save", "連絡先を保存");
   btn.type = "button";
   btn.addEventListener("click", function () { saveVCard(c, id); });
-  card.appendChild(btn);
+  root.appendChild(btn);
 
-  var rows = [];
-  if (c.phone) rows.push(["電話", c.phone, "tel:" + c.phone.replace(/[^\d+]/g, "")]);
-  if (c.email) rows.push(["メール", c.email, "mailto:" + c.email]);
-  if (c.website) rows.push(["Web", c.website.replace(/^https?:\/\//, "").replace(/\/$/, ""), c.website]);
-  (c.links || []).forEach(function (l) { rows.push([l.label, l.text || "", l.url]); });
-  if (c.address) rows.push(["住所", c.address, "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(c.address)]);
+  // ボタンの欄
+  (c.sections || []).forEach(function (s) {
+    var links = (s.links || []).filter(function (l) { return l.url; });
+    if (!links.length && !s.text) return;
+    var sec = el("section", "sec");
+    if (s.heading) sec.appendChild(el("h2", "sec-h", s.heading));
+    if (s.text) sec.appendChild(el("p", "sec-t", s.text));
+    links.forEach(function (l) { sec.appendChild(link(l.url, "btn", l.label)); });
+    root.appendChild(sec);
+  });
 
-  if (rows.length) {
-    var ul = el("ul", "list");
-    rows.forEach(function (r) {
-      var a = el("a");
-      a.href = r[2];
-      if (/^https?:/.test(r[2])) { a.target = "_blank"; a.rel = "noopener"; }
-      if (r[1]) { a.appendChild(el("span", "k", r[0])); a.appendChild(el("span", "v", r[1])); }
-      else { a.appendChild(el("span", "v", r[0])); }
-      a.appendChild(el("span", "arrow", "›"));
-      var li = el("li"); li.appendChild(a); ul.appendChild(li);
-    });
-    card.appendChild(ul);
-  }
-
-  root.appendChild(card);
-  root.appendChild(el("p", "foot", c.org));
+  root.appendChild(el("p", "foot", "© " + c.org));
 
   function esc(s) { return String(s || "").replace(/\\/g, "\\\\").replace(/\n/g, "\\n").replace(/([,;])/g, "\\$1"); }
 
   function saveVCard(c, id) {
-    var family = "", given = "";
     var n = (c.name || "").split(/[\s　]+/);
-    if (n.length > 1) { family = n[0]; given = n.slice(1).join(" "); } else { family = c.name || ""; }
+    var family = n[0] || "", given = n.slice(1).join(" ");
     var k = (c.nameKana || "").split(/[\s　]+/);
     var L = [
       "BEGIN:VCARD", "VERSION:3.0",
@@ -90,7 +90,6 @@
     if (c.email) L.push("EMAIL;TYPE=INTERNET:" + c.email);
     if (c.website) L.push("URL:" + c.website);
     L.push("URL:" + location.href.split("#")[0]);
-    (c.links || []).forEach(function (l) { L.push("URL:" + l.url); });
     if (c.address) L.push("ADR;TYPE=WORK:;;" + esc(c.address) + ";;;;");
     L.push("END:VCARD");
 
