@@ -8,7 +8,7 @@
   // 丸いアイコン（背景色と白い絵）
   var ICONS = {
     phone: ["#30c25a", '<path d="M8.6 4.5c.4-.4 1-.4 1.4 0l1.7 2.1c.3.4.3 1-.1 1.4l-1 1c.8 1.7 2.2 3.1 3.9 3.9l1-1c.4-.4 1-.4 1.4-.1l2.1 1.7c.4.4.4 1 0 1.4l-1.3 1.3c-.6.6-1.5.8-2.3.5C11.5 15.6 8.4 12.5 7 8.6c-.3-.8-.1-1.7.5-2.3z" fill="#fff"/>'],
-    mail: ["#ea4335", '<rect x="5" y="7" width="14" height="10" rx="1.5" fill="none" stroke="#fff" stroke-width="1.8"/><path d="M5.5 7.8 12 12.6l6.5-4.8" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/>'],
+    mail: ["var(--accent)", '<rect x="5.5" y="7.5" width="13" height="9" rx="1" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M5.8 8l6.2 4.6L18.2 8" fill="none" stroke="#fff" stroke-width="1.5"/>'],
     instagram: ["linear-gradient(45deg,#f9a825,#e1306c 50%,#833ab4)", '<rect x="5.5" y="5.5" width="13" height="13" rx="4" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="3.1" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="15.9" cy="8.1" r="1" fill="#fff"/>'],
     facebook: ["#1877f2", '<path d="M13.2 19v-6h2l.3-2.4h-2.3V9.2c0-.7.2-1.2 1.2-1.2h1.2V5.9c-.2 0-1-.1-1.8-.1-1.8 0-3 1.1-3 3.1v1.7h-2V13h2v6z" fill="#fff"/>'],
     web: ["var(--accent)", '<circle cx="12" cy="12" r="6.5" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M5.5 12h13M12 5.5c-2.2 2.4-2.2 10.6 0 13M12 5.5c2.2 2.4 2.2 10.6 0 13" fill="none" stroke="#fff" stroke-width="1.6"/>'],
