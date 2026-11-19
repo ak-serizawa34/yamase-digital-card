@@ -59,7 +59,7 @@
 
   // リンクの欄（電話・メールは先頭の欄の上に足す）
   var sections = (c.sections || []).map(function (s) {
-    return { heading: s.heading, text: s.text, contact: s.contact, links: (s.links || []).slice() };
+    return { en: s.en, heading: s.heading, text: s.text, contact: s.contact, links: (s.links || []).slice() };
   });
   if (!sections.length) sections.push({ links: [] });
   var head = [];
@@ -74,6 +74,7 @@
     var links = s.links.filter(function (l) { return l.url; });
     if (!links.length && !s.text) return;
     var sec = el("section", "sec");
+    if (s.en) sec.appendChild(el("p", "sec-en", s.en));
     if (s.heading) sec.appendChild(el("h2", "sec-h", s.heading));
     if (s.text) sec.appendChild(el("p", "sec-t", s.text));
     links.forEach(function (l) { sec.appendChild(row(l)); });
@@ -90,6 +91,13 @@
     if (l.img) {
       i.className = "icon img";
       var im = el("img"); im.src = l.img; im.alt = ""; i.appendChild(im);
+      // 画像アイコンのときは、右下に小さいサービスのマークを付ける（Instagram だと分かるように）
+      if (ICONS[l.type]) {
+        var bd = el("span", "badge");
+        bd.style.background = ICONS[l.type][0];
+        bd.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true">' + ICONS[l.type][1] + "</svg>";
+        i.appendChild(bd);
+      }
     } else {
       var ic = ICONS[l.type] || ICONS.link;
       i.style.background = ic[0];
@@ -99,7 +107,10 @@
     var t = el("span", "row-t");
     t.appendChild(el("span", "row-l", l.label));
     if (l.desc) t.appendChild(el("span", "row-d", l.desc));
-    t.appendChild(el("span", "row-v", l.text || l.url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")));
+    var SERVICE = { instagram: "Instagram", facebook: "Facebook" };
+    var v = l.text || l.url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+    if (l.img && SERVICE[l.type]) v = SERVICE[l.type] + "  " + v;
+    t.appendChild(el("span", "row-v", v));
     a.appendChild(t);
     if (l.cta) a.appendChild(el("span", "cta", l.cta));
 
