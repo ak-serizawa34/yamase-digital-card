@@ -86,17 +86,35 @@
     var a = el("a", "row");
     a.href = l.url;
     if (/^https?:/.test(l.url)) { a.target = "_blank"; a.rel = "noopener"; }
-    var ic = ICONS[l.type] || ICONS.link;
     var i = el("span", "icon");
-    i.style.background = ic[0];
-    i.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true">' + ic[1] + "</svg>";
+    if (l.img) {
+      i.className = "icon img";
+      var im = el("img"); im.src = l.img; im.alt = ""; i.appendChild(im);
+    } else {
+      var ic = ICONS[l.type] || ICONS.link;
+      i.style.background = ic[0];
+      i.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true">' + ic[1] + "</svg>";
+    }
     a.appendChild(i);
     var t = el("span", "row-t");
     t.appendChild(el("span", "row-l", l.label));
+    if (l.desc) t.appendChild(el("span", "row-d", l.desc));
     t.appendChild(el("span", "row-v", l.text || l.url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")));
     a.appendChild(t);
     if (l.cta) a.appendChild(el("span", "cta", l.cta));
-    return a;
+
+    var more = (l.more || []).filter(function (m) { return m.url; });
+    if (!more.length) return a;
+    var box = el("div", "item");
+    box.appendChild(a);
+    var bar = el("div", "more");
+    more.forEach(function (m) {
+      var b = el("a", "chip", m.label);
+      b.href = m.url; b.target = "_blank"; b.rel = "noopener";
+      bar.appendChild(b);
+    });
+    box.appendChild(bar);
+    return box;
   }
 
   function esc(s) { return String(s || "").replace(/\\/g, "\\\\").replace(/\n/g, "\\n").replace(/([,;])/g, "\\$1"); }

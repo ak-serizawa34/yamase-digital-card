@@ -31,8 +31,24 @@ window.CARDS = {
         // YAMASE が運営しているお店・活動。見てくれた人にフォローしてもらいたい。cta が右側のボタンの文字になる。
         heading: "運営しているお店・活動",
         links: [
-          { type: "instagram", label: "hotorino", text: "@hotorino_", cta: "フォロー", url: "https://www.instagram.com/hotorino_/" },
-          { type: "instagram", label: "愛鷹テロワール", text: "@ashitaka_terroir", cta: "フォロー", url: "https://www.instagram.com/ashitaka_terroir/" },
+          // img：丸いアイコンの画像（Instagram のプロフィール画像など）
+          // desc：一言の説明　more：下に並べる小さいボタン
+          {
+            type: "instagram", img: "../assets/hotorino.jpg",
+            label: "hotorino（ホトリノ）", desc: "狩野川のほとりで、小さな拠点をひらいています。",
+            text: "@hotorino_", cta: "フォロー", url: "https://www.instagram.com/hotorino_/",
+            more: [
+              { label: "Web サイト", url: "" },   // 要確認（Instagram に hotorino.jp とあるが、2026-11-19 時点で開けなかった）
+            ],
+          },
+          {
+            type: "instagram", img: "../assets/ashitaka_terroir.jpg",
+            label: "愛鷹テロワール", desc: "静岡東部らしさを勝手に語ってます。",
+            text: "@ashitaka_terroir", cta: "フォロー", url: "https://www.instagram.com/ashitaka_terroir/",
+            more: [
+              { label: "Spotify で聴く", url: "https://open.spotify.com/show/0346YteU64OWcHY2xqwcE0" },
+            ],
+          },
         ],
       },
       {
