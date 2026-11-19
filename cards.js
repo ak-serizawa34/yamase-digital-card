@@ -28,8 +28,8 @@ window.CARDS = {
     // リンクの欄。上から順に表示する。heading が空の欄は見出しなし。
     sections: [
       {
-        // 見てくれた人にフォローしてもらいたいアカウント。cta が右側のボタンの文字になる。
-        heading: "Instagram をフォローしてください",
+        // YAMASE が運営しているお店・活動。見てくれた人にフォローしてもらいたい。cta が右側のボタンの文字になる。
+        heading: "運営しているお店・活動",
         links: [
           { type: "instagram", label: "hotorino", text: "@hotorino_", cta: "フォロー", url: "https://www.instagram.com/hotorino_/" },
           { type: "instagram", label: "愛鷹テロワール", text: "@ashitaka_terroir", cta: "フォロー", url: "https://www.instagram.com/ashitaka_terroir/" },
