@@ -9,6 +9,8 @@ GitHub Pages で公開する（2026-11-19 決定）。
 
 `https://ak-serizawa34.github.io/yamase-digital-card/yamase/`
 
+このアドレスで確定（2026-11-19。独自ドメインにはしない）。
+
 - タグに書いたURLは、あとから変えられない。フォルダ名（`yamase/` など）も、公開先のアドレスも変えないこと
 - ページの中身は、`cards.js` を直せばいつでも変わる（タグはそのまま）
 
