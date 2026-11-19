@@ -15,7 +15,7 @@ window.CARDS = {
     name: "芹澤 亮裕",
     nameKana: "せりざわ あきひろ",          // 連絡先を保存したときのふりがな
     nameEn: "Akihiro Serizawa",
-    bio: "まちに、なんだか新しい風を。\n宿をひらいたり、\nポッドキャストで地元を語ったりしています。", // YAMASE の下のリード文（\n で改行）
+    bio: "まちに、なんだか新しい風を。", // YAMASE の下のリード文（\n で改行）
     photo: "../assets/photo.jpg",         // 顔写真（空なら頭文字を表示）
     accent: "#3f9a9a",                    // テーマ色（share-me の名刺に合わせたティール）
 
