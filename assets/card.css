@@ -56,7 +56,7 @@ body {
 .sec { margin-top: 28px; }
 .sec + .sec { margin-top: 32px; }
 .sec-en { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: .02em; }
-.sec-h { margin: 0 0 4px; font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: .08em; }
+.sec-h { margin: 2px 0 4px; font-size: 11px; font-weight: 600; color: var(--accent); letter-spacing: .2em; text-transform: uppercase; }
 .sec-t { margin: 0 0 8px; font-size: 13px; color: var(--muted); }
 .row {
   display: flex; align-items: center; gap: 14px;

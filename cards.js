@@ -30,7 +30,7 @@ window.CARDS = {
       {
         // YAMASE が運営しているお店・活動。見てくれた人にフォローしてもらいたい。cta が右側のボタンの文字になる。
         en: "Follow us",                   // 見出しの上の大きい英字
-        heading: "運営しているお店・活動の Instagram",
+        heading: "Our projects on Instagram",
         links: [
           // img：丸いアイコンの画像（Instagram のプロフィール画像など）
           // desc：一言の説明　more：下に並べる小さいボタン
@@ -54,7 +54,7 @@ window.CARDS = {
       },
       {
         // contact: true の欄の一番上に、電話とメールが入る。
-        heading: "連絡先",
+        heading: "Contact",
         contact: true,
         links: [
           { type: "instagram", label: "Instagram", text: "@serizawakihiro", url: "https://www.instagram.com/serizawakihiro/" },
